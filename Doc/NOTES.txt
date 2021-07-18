@@ -1,0 +1,3 @@
+Green are buttons
+Within the Red are Pots
+Purple are Slider
