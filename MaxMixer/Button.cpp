@@ -18,9 +18,9 @@ void Button::begin()
 
 bool Button::isButtonPressed()
 {
-    if (HIGH == digitalRead(_pin) )
+    if (HIGH == digitalRead(_pin))
     {
-        return true
+        return true;
     }
     else
     {

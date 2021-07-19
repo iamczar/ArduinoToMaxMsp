@@ -1,3 +1,7 @@
 Green are buttons
 Within the Red are Pots
 Purple are Slider
+
+
+
+Example - http://adam-meyer.com/arduino/CD74HC4067

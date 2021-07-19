@@ -15,7 +15,6 @@ public:
     String buildEqualiser();
     String buildCompressor();
     String buildLimiter();
-    String buildLimiter();
     String buildStereoImager();
     String buildSaturation();
     String buildButtomButtonsAndVolSlider();
@@ -84,6 +83,6 @@ public:
     int ABButton;
 
     // middle
-    int GAIN;
+    int Gain;
 };
 

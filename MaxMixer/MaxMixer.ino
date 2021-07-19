@@ -20,9 +20,8 @@
 #define chanQAnalogueRight 11
 
 // saturation
-#define chanSaturationOnButton 12
-#define chanSaturationDrive 13
-#define chanSaturationDryWet 14
+#define chanSaturationDrive 12
+#define chanSaturationDryWet 13
 
 // mux 2 channels
 
@@ -45,21 +44,22 @@
 #define chanStereoHighAnalogue 11
 
 #define chanVolumeSilder 12
+#define chanMiddleGain 13
 
 
-// mux 1 variables - TBD
-#define mux1CtrlPin1 1
-#define mux1ctrlPin2 2
-#define mux1ctrlPin3 3
-#define mux1ctrlPin4 4
-#define mux1analogReadPin 5
+// mux 1 variables
+#define mux1CtrlPin1 8
+#define mux1ctrlPin2 9
+#define mux1ctrlPin3 10
+#define mux1ctrlPin4 11
+#define mux1analogReadPin A0
 
 // mux 2 variables - TBD
-#define mux2CtrlPin1 1
-#define mux2ctrlPin2 2
-#define mux2ctrlPin3 3
-#define mux2ctrlPin4 4
-#define mux2analogReadPin 5
+#define mux2CtrlPin1 4
+#define mux2ctrlPin2 5
+#define mux2ctrlPin3 6
+#define mux2ctrlPin4 7
+#define mux2analogReadPin A1
 
 Multiplexer multiplexer1(mux1CtrlPin1,
                          mux1ctrlPin2,
@@ -74,27 +74,27 @@ Multiplexer multiplexer2(mux2CtrlPin1,
                          mux2analogReadPin);
 
 // Pin TBD
-Button Gbutton(13);
-Button EQ1Button(13);
-Button C1Button(13);
-Button SAButton(13);
-Button EQ2Button(13);
-Button C2Button(13);
-Button SIButton(13);
-Button L1Button(13);
-Button L2Button(13);
+Button Gbutton(22);
+Button EQ1Button(24);
+Button C1Button(26;
+Button SAButton(28);
+Button EQ2Button(30);
+Button C2Button(32);
+Button SIButton(34);
+Button L1Button(36);
+Button L2Button(38);
 
-Button EqualizserOnButton(13);
-Button CompressorOnButton(13);
-Button LimiterOnButton(13);
-Button StereoImagerOnButton(13);
-Button SaturationrOnButton(13);
+Button EqualizserOnButton(40);
+Button CompressorOnButton(42);
+Button LimiterOnButton(44);
+Button StereoImagerOnButton(46);
+Button SaturationrOnButton(48);
 
-Button StopButton(13);
-Button PlayPauseButton(13);
-Button PrevButton(13);
-Button FwdButton(13);
-Button ABBUtton(13);
+Button StopButton(31);
+Button PlayPauseButton(33);
+Button PrevButton(35);
+Button FwdButton(37);
+Button ABBUtton(39);
 
 Mixer mixer;
 
@@ -162,7 +162,7 @@ void loop()
   mixer.QAnalogueRight        = multiplexer1.readChannel(chanQAnalogueRight);
 
   // Saturation 
-  mixer.saturationOnButton    = multiplexer1.readChannel(chanSaturationOnButton);
+  mixer.saturationOnButton    = SaturationrOnButton.isButtonPressed();
   mixer.saturationDrive       = multiplexer1.readChannel(chanSaturationDrive);
   mixer.saturationDryWet      = multiplexer1.readChannel(chanSaturationDryWet);
 
@@ -170,7 +170,7 @@ void loop()
 
   // compressor
   mixer.compressonOnButton    = CompressorOnButton.isButtonPressed();
-  mixer.thresholdAnalogue     = multiplexer2.readChannel(chanRatioAnalogue);
+  mixer.thresholdAnalogue     = multiplexer2.readChannel(chanThresholdAnalogue);
   mixer.ratioAnalogue         = multiplexer2.readChannel(chanRatioAnalogue);
   mixer.attackAnalogue        = multiplexer2.readChannel(chanAttackAnalogue);
   mixer.releaseAnalogue       = multiplexer2.readChannel(chanReleaseAnalogue);
@@ -198,6 +198,10 @@ void loop()
   mixer.ABButton              = ABBUtton.isButtonPressed();
 
   mixer.volumeSilder          = multiplexer2.readChannel(chanVolumeSilder);
+
+  mixer.Gain                  = multiplexer2.readChannel(chanMiddleGain);
+
+  delay(100);
 
   mixer.sendMixerToMax();
 
