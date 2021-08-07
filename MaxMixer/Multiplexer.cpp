@@ -62,6 +62,7 @@ int Multiplexer::readChannel(int channel)
     
     //read the value at the SIG pin
     int val = analogRead(_analogReadPin);
+    delay(10);
 
     //return the value
     return val;

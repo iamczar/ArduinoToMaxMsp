@@ -1,5 +1,6 @@
 {
-    "board": "arduino:avr:uno",
-    "port": "COM11",
-    "sketch": "MaxMixer.ino"
+    "board": "arduino:avr:mega",
+    "port": "COM8",
+    "sketch": "MaxMixer.ino",
+    "configuration": "cpu=atmega2560"
 }

@@ -33,10 +33,12 @@ String Mixer::buildEqualiser()
     + " " + toString(freqAnalogueMidLeft)
     + " " + toString(freqAnalogueMidRight)
     + " " + toString(freqAnalogueRight)
+
     + " " + toString(gainAnalogueLeft)
     + " " + toString(gainAnalogueMidLeft)
     + " " + toString(gainAnalogueMidRight)
     + " " + toString(gainAnalogueRight)
+
     + " " + toString(QAnalogueLeft)
     + " " + toString(QAnalogueMidLeft)
     + " " + toString(QAnalogueMidRight)
@@ -91,14 +93,15 @@ void Mixer::sendMixerToMax()
 {
     String stringToSend;
 
-    stringToSend = buildTopButtons() 
-    + buildEqualiser()
-    + buildCompressor()
-    + buildLimiter()
-    + buildLimiter()
-    + buildStereoImager()
-    + buildSaturation()
-    + buildButtomButtonsAndVolSlider();
+    stringToSend = buildEqualiser();
+
+    //stringToSend = buildTopButtons();
+    //+ buildEqualiser();
+    // + buildCompressor()
+    // + buildLimiter()
+    // + buildStereoImager()
+    // + buildSaturation()
+    // + buildButtomButtonsAndVolSlider();
 
     Serial.print(stringToSend);
 }
